@@ -1,7 +1,7 @@
 {
-  "name": "@quantrock/nuxt-socket.io",
-  "version": "1.0.1",
-  "description": "Nuxt module for Socket.io",
+  "name": "@alexcolls/nuxt-socket.io",
+  "version": "0.0.1",
+  "description": "Nuxt module for Socket.io (server & client)",
   "repository": "alexcolls/nuxt-socket.io",
   "license": "MIT",
   "type": "module",
@@ -22,7 +22,7 @@
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
-    "release": "npm run lint && npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
+    "release": "npm run lint && npm run test && npm run prepack && changelogen --release && npm publish --access public && git push --follow-tags",
     "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest watch"

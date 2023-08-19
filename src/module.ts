@@ -10,7 +10,7 @@ export interface ModuleOptions {
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
-    name: "@quantrock/nuxt-socket.io",
+    name: "@alexcolls/nuxt-socket.io",
     configKey: "nuxtSocketIO",
     version: "0.0.1",
   },

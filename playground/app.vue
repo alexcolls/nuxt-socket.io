@@ -11,6 +11,6 @@ import { useNuxtApp } from '#app';
 const { $io }: any = useNuxtApp();
 
 const sendMessage = () => {
-  $io.emit('message', 'Hello from nuxtSocketIO!');
+  $io.emit('message', 'Hello from client! nuxtSocketIO is working!');
 };
 </script>

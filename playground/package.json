@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "my-module-playground",
+  "name": "@alexcolls/nuxt-socket.io-playground",
   "type": "module",
   "scripts": {
     "dev": "nuxi dev",

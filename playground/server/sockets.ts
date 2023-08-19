@@ -18,7 +18,7 @@ export default function (io: Server) {
     });
     // Socket events
     socket.on("message", (message: object) => {
-      console.log("Server says:", message);
+      console.log("Server received:", message);
     });
   });
 }
