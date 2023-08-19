@@ -1,6 +1,6 @@
 {
   "name": "@alexcolls/nuxt-socket.io",
-  "version": "0.0.3",
+  "version": "0.0.6",
   "description": "Nuxt module for Socket.io (server & client)",
   "repository": "alexcolls/nuxt-socket.io",
   "license": "MIT",
