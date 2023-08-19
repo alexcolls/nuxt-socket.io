@@ -49,7 +49,7 @@ export default defineNuxtConfig({
 
 In the server folder create a file named sockets.ts (or a folder sockets/index.ts) with the init function for the socket server.
 
-```
+```js
 import { Server, Socket } from "socket.io";
 
 const printUsersConnected = (usersConnected: number) => {
@@ -74,10 +74,23 @@ export default function (io: Server) {
     });
   });
 }
-
 ```
 
 That's it! You can now use nuxtSocketIO in your Nuxt app ✨
+
+## Usage
+
+You can access to the socket instance in the client just like this:
+
+```js
+const { $socket } = useNuxtApp();
+
+$socket.emit("event", "Hello from client!");
+
+$socket.on("event", () => {
+  // Do something...
+});
+```
 
 ## Development
 
