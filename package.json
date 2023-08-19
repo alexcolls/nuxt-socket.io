@@ -1,6 +1,6 @@
 {
   "name": "nuxt-socket.io",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "My new Nuxt module",
   "repository": "alexcolls/nuxt-socket.io",
   "license": "MIT",
