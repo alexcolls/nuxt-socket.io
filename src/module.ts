@@ -3,35 +3,37 @@ import { Server } from "socket.io";
 import printError from "./runtime/printError";
 
 // Module options TypeScript interface definition
-type socketInitFunction = (io: Server) => void;
+type socketServerFunction = (io: Server) => void;
 export interface ModuleOptions {
-  initSocketServer: socketInitFunction | null;
+  socketServer: socketServerFunction | null;
 }
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
     name: "@alexcolls/nuxt-socket.io",
-    configKey: "nuxtSocketIO",
-    version: "0.0.1",
+    configKey: "socketIO",
+    compatibility: {
+      nuxt: "^3.0.0",
+    },
   },
   // Default configuration options of the Nuxt module
   defaults: {
-    initSocketServer: null,
+    socketServer: null,
   },
   async setup(options, nuxt) {
-    if (!options.initSocketServer) {
-      printError("initSocketServer function is required!");
+    if (!options.socketServer) {
+      printError("socketServer function is required!");
       await nuxt.close();
-      throw new Error("initSocketServer function is required!");
+      throw new Error("socketServer function is required!");
     }
     nuxt.hook("listen", (server) => {
       const io = new Server(server);
-      options.initSocketServer!(io);
+      options.socketServer!(io);
     });
     // Do not add the extension since the `.ts` will be transpiled to `.mjs` after `npm run prepack`
     const resolver = createResolver(import.meta.url);
     addPlugin({
-      src: resolver.resolve("./runtime/plugin.ts"),
+      src: resolver.resolve("./runtime/plugin"),
       mode: "client",
     });
   },

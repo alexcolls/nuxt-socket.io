@@ -8,9 +8,9 @@
 <script setup lang="ts">
 import { useNuxtApp } from '#app';
 
-const { $io }: any = useNuxtApp();
+const { $socket }: any = useNuxtApp();
 
 const sendMessage = () => {
-  $io.emit('message', 'Hello from client! nuxtSocketIO is working!');
+  $socket.emit('message', 'Hello from client! nuxtSocketIO is working!');
 };
 </script>

@@ -9,7 +9,7 @@ export default function (error: string) {
         ${chalk.bold("Error:")} ${error}
       `)}
       ${chalk.green(`
-      1. Create a file inside your server folder. Also you can create a folder if you prefer (i.e. sockets/index.ts):`)} 
+      1. Create a file inside your server folder. Also you can create a folder if you prefer (sockets/index.ts):`)} 
 
       ${chalk.bold("cd")} server && ${chalk.bold("touch")} sockets.ts
 
@@ -38,16 +38,14 @@ export default function (error: string) {
 
       ${chalk.bold("import socketServer from './server/sockets.ts';")}
 
-      socketIO: {
-        initSocketServer: socketServer,
-      },
+      socketIO: { socketServer },
       `,
       {
         padding: 0.5,
         margin: 0.5,
         borderStyle: "double",
         dimBorder: true,
-        title: "initSocketServer Function Required",
+        title: "socketServer Function Required",
         titleAlignment: "center",
       }
     )

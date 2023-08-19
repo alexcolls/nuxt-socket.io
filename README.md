@@ -1,12 +1,3 @@
-<!--
-Get your module up and running quickly.
-
-Find and replace all on all files (CMD+SHIFT+F):
-- Name: nuxtSocketIO
-- Package name: @alexcolls/nuxt-socket.io
-- Description: My new Nuxt module
--->
-
 # nuxtSocketIO
 
 [![npm version][npm-version-src]][npm-version-href]
@@ -34,21 +25,56 @@ Nuxt module for Socket.io (server & client).
 
 ```bash
 # Using pnpm
-pnpm add -D @alexcolls/nuxt-socket.io
+pnpm add @alexcolls/nuxt-socket.io
 
 # Using yarn
-yarn add --dev @alexcolls/nuxt-socket.io
+yarn add @alexcolls/nuxt-socket.io
 
 # Using npm
-npm install --save-dev @alexcolls/nuxt-socket.io
+npm install @alexcolls/nuxt-socket.io
 ```
 
 2. Add `@alexcolls/nuxt-socket.io` to the `modules` section of `nuxt.config.ts`
 
 ```js
+import socketServer from "./server/sockets";
+
 export default defineNuxtConfig({
   modules: ["@alexcolls/nuxt-socket.io"],
+  nuxtSocketIO: {
+    initSocketServer: socketServer,
+  },
 });
+```
+
+In the server folder create a file named sockets.ts (or a folder sockets/index.ts) with the init function for the socket server.
+
+```
+import { Server, Socket } from "socket.io";
+
+const printUsersConnected = (usersConnected: number) => {
+  console.log(
+    `${usersConnected} user${usersConnected === 1 ? "" : "s"} connected`
+  );
+};
+
+export default function (io: Server) {
+  let usersConnected = 0;
+  io.on("connection", (socket: Socket) => {
+    // Connection/Disconnection events
+    usersConnected++;
+    printUsersConnected(usersConnected);
+    socket.on("disconnect", () => {
+      usersConnected--;
+      printUsersConnected(usersConnected);
+    });
+    // Socket events
+    socket.on("message", (message: object) => {
+      console.log("Server received:", message);
+    });
+  });
+}
+
 ```
 
 That's it! You can now use nuxtSocketIO in your Nuxt app ✨
