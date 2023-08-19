@@ -1,7 +1,9 @@
-import MyModule from '../../../src/module'
+// import nuxtSocketIO from "../../../src/module";
+import socketServer from "./server/sockets";
 
 export default defineNuxtConfig({
-  modules: [
-    MyModule
-  ]
-})
+  modules: ["../../../src/module"],
+  nuxtSocketIO: {
+    initSocketServer: socketServer,
+  },
+});

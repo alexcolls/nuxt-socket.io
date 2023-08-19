@@ -1,5 +1,7 @@
-import { defineNuxtPlugin } from '#app'
+import { defineNuxtPlugin } from "#app";
+import socket from "socket.io-client";
 
 export default defineNuxtPlugin((nuxtApp) => {
-  console.log('Plugin injected by my-module!')
-})
+  const io = socket("/");
+  nuxtApp.provide("io", io);
+});

@@ -1,8 +1,16 @@
 <template>
   <div>
-    Nuxt module playground!
+    <button @click="sendMessage">
+      Send Message
+    </button>
   </div>
 </template>
+<script setup lang="ts">
+import { useNuxtApp } from '#app';
 
-<script setup>
+const { $io }: any = useNuxtApp();
+
+const sendMessage = () => {
+  $io.emit('message', 'Hello from nuxtSocketIO!');
+};
 </script>
